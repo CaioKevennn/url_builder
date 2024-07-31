@@ -1,0 +1,27 @@
+
+{
+    "name": "caiokeven/url_builder",
+    "description": "just for fun ",
+    "type": "project",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/",
+            "core\\": "core/"
+        },
+        "files": [
+            "config/config.php"
+        ]
+    },
+   "authors": [
+        {
+            "name": "Caio Keven",
+            "email": "caiokeven3176@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.2"
+    }
+}
+
