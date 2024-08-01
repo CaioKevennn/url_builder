@@ -7,9 +7,38 @@ use app\models\UrlBuilderModel;
 
 class SiteController {
     public function home(){
+        
         require_once __DIR__ . '/../views/UrlBuilderView.php';
         
 
+    }
+    public function home2(){
+       
+        echo "entrou aq";
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $url = filter_var($_POST['url'], FILTER_SANITIZE_URL);
+            $utms = [];
+            $genered_url = " ";
+            $utms['utm_campaign'] = filter_var($_POST['utm_campaign'], FILTER_SANITIZE_STRING);
+            $utms['utm_source'] = filter_var($_POST['utm_source'], FILTER_SANITIZE_STRING);
+            $utms['utm_medium'] = filter_var($_POST['utm_medium'], FILTER_SANITIZE_STRING);
+            $utms['utm_content'] = filter_var($_POST['utm_content'], FILTER_SANITIZE_STRING);
+            $utms['utm_term'] = filter_var($_POST['utm_term'], FILTER_SANITIZE_STRING);
+            foreach ($utms as $index => $utm) {
+                if ($utm) {
+                    if (!$genered_url) {
+                        $genered_url = $url . "?" . $index . $utm;
+                    } else {
+                        $genered_url = $genered_url . "&" . $index . $utm;
+
+                    }
+
+                }
+
+            }
+
+
+        }
     }
     /*
     public function register() {
