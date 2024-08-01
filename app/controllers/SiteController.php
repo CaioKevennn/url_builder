@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Controllers;
+namespace app\controllers;
 #use app\models\TaskModel;
 #arquivo base para pesquisar informações
 
 
-class Site  {
+class SiteController {
     public function home(){
-        require_once __DIR__ . '/../views/home.php';
+        require_once __DIR__ . '/../views/UrlBuilderView.php';
+        
+
     }
+    /*
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $title = $_POST['title'];
@@ -52,5 +55,6 @@ class Site  {
         echo "apagou";
     }
     
-
+*/  
 }
+    

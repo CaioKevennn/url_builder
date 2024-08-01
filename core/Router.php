@@ -9,8 +9,9 @@ class Router
     public function __construct()
     {
         $router = $this->url();
-        $class = "\\app\\controllers\\" . ucfirst($this->controller);
+        $class = "\\app\\controllers\\" . ucfirst($this->controller)."Controller";
         $object = new $class;
+        
 
 
         if (!empty($router[0]) && file_exists('app/controllers/' . ucfirst($router[0]) . '.php')) {
