@@ -29,7 +29,10 @@ class SiteController {
                     if (!$genered_url) {
                         $genered_url = $url . "?" . $index . $utm;
                     } else {
-                        $genered_url = $genered_url . "&" . $index . $utm;
+                        if($utm!=="")
+                        {
+                            $genered_url = $genered_url . "&" . $index . $utm;
+                        }
 
                     }
 

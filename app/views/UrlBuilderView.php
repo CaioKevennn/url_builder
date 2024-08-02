@@ -32,7 +32,7 @@
                 <label for="utm_term">UTM Term</label>
                 <input type="text" id="utm_term" name="utm_term" class="form-control"value="<?= isset($utms['utm_term'])?$utms['utm_term']:""?>" >
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary"> Generate URL</button>
         </form>
         <!-- display only when a URL was generated-->
         <?php if (isset($_SESSION['generated_url']) && $_SESSION['generated_url'] !== ''): ?>
