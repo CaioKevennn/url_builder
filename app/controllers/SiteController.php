@@ -7,7 +7,7 @@ use app\models\UrlBuilderModel;
 
 class SiteController {
     public function home(){
-        
+        session_start();
         require_once __DIR__ . '/../views/UrlBuilderView.php';
         
 

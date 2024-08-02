@@ -9,6 +9,7 @@ class UrlBuilderController
 {
     public function home()
     {
+
         require_once __DIR__ . '/../views/UrlBuilderView.php';
     }
     public function CreateUrl()
@@ -33,12 +34,22 @@ class UrlBuilderController
                 $_SESSION['generated_url'] = $genered_url;
                 $new_url = new UrlBuilderModel($genered_url);
                 $new_url->saveUrl();
-                require_once __DIR__ . '/../views/UrlBuilderView.php';                $_SESSION['generated_url'] = $genered_url;
+                require_once __DIR__ . '/../views/UrlBuilderView.php';
+                $_SESSION['generated_url'] = $genered_url;
 
             } catch (Exception $e) {
-                echo "ocorreu o erro:" . $e->getMessage();
+                echo "An error occurred:" . $e->getMessage() . "Please try again later.";
             }
 
+        }
+    }
+    public function loadUrls()
+    {
+        try {
+            $all_urls = UrlBuilderModel::loadAll();
+            require_once __DIR__ . '/../views/UrlBuilderView.php';
+        } catch (Exception $e) {
+            echo "An error occurred:" . $e->getMessage() . "Please try again later.";
         }
     }
 

@@ -42,6 +42,35 @@
                 </div>
             </div>
         <?php endif; ?>
+        
+        <form action="?router=UrlBuilder/loadUrls" method="post" class="mt-3">
+            <button type="submit" class="btn btn-primary">Show URL History</button>
+        </form>
+        <!-- Display URLs in a table when available -->
+        <?php if (isset($all_urls) && !empty($all_urls)): ?>
+            <div class="mt-4">
+                <h2>URL History</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>URL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($all_urls as $url): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($url['id_url'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                    <td><a href="<?= htmlspecialchars($url['link_url'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank"><?= htmlspecialchars($url['link_url'], ENT_QUOTES, 'UTF-8'); ?></a></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
     </div>
 </body>
 </html>
