@@ -29,15 +29,11 @@ class UrlBuilderController
                     } else {
                         $genered_url = $genered_url . "&" . $index . "=" . $utm;
                     }
-
                 }
                 $_SESSION['generated_url'] = $genered_url;
                 $new_url = new UrlBuilderModel($genered_url);
-                $new_url->saveUrl();    
-                require_once __DIR__ . '/../views/UrlBuilderView.php';
-                echo "salvo com sucesso";
-                $_SESSION['generated_url'] = $genered_url;
-                
+                $new_url->saveUrl();
+                require_once __DIR__ . '/../views/UrlBuilderView.php';                $_SESSION['generated_url'] = $genered_url;
 
             } catch (Exception $e) {
                 echo "ocorreu o erro:" . $e->getMessage();
