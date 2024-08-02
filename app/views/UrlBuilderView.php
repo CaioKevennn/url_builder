@@ -18,7 +18,7 @@ use app\controllers\UrlBuilderController;
         <form action="?router=UrlBuilder/CreateUrl" method="post">
             <div class="form-group">
                 <label for="url">URL</label>
-                <input type="text" id="url" name="url" class="form-control" >
+                <input type="text" id="url" name="url" class="form-control" value="<?= isset($url) ? $url : ''; ?>" >
             </div>
             <div class="form-group">
                 <label for="utm_campaign">UTM Campaign</label>
@@ -43,6 +43,10 @@ use app\controllers\UrlBuilderController;
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
     </div>
-
+    <p>
+        <?= isset($_SESSION['generated_url']) && $_SESSION['generated_url'] !== '' 
+            ? 'Generated URL: ' . htmlspecialchars($_SESSION['generated_url'], ENT_QUOTES, 'UTF-8') 
+            : 'No URL generated yet.'; ?>
+    </p>
 </body>
 </html>

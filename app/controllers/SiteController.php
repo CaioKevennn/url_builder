@@ -37,6 +37,7 @@ class SiteController {
 
             }
 
+            echo $genered_url;
 
         }
     }
