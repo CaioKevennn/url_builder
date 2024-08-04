@@ -1,14 +1,14 @@
-# Desativa a listagem de diretórios
+# Disable directory listing
 Options -Indexes
 
-# Ativa o mecanismo de reescrita de URLs
+# Enable URL rewriting engine
 RewriteEngine ON
 
-# Verifica se o arquivo solicitado não existe como arquivo regular
+# Check if the requested file does not exist as a regular file
 RewriteCond %{REQUEST_FILENAME} !-f
 
-# Verifica se o arquivo solicitado não existe como diretório
+# Check if the requested file does not exist as a directory
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Redireciona todas as requisições para index.php passando o caminho como parâmetro 'router'
+# Redirect all requests to index.php, passing the path as a 'router' parameter
 RewriteRule ^(.*)$ index.php?router=$1 [QSA,L]

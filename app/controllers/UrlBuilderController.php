@@ -14,7 +14,8 @@ class UrlBuilderController
     }
     public function CreateUrl()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') 
+        {
             try {
                 $utms = [];
                 $genered_url = " ";
@@ -53,6 +54,38 @@ class UrlBuilderController
             require_once __DIR__ . '/../views/UrlBuilderView.php';
         } catch (Exception $e) {
             echo "An error occurred:" . $e->getMessage() . "Please try again later.";
+        }
+    }
+
+    public function exportUrls()
+    {
+        try {
+            $all_urls = UrlBuilderModel::loadAll();
+            if (ob_get_length()) {
+                ob_end_clean();
+            }
+
+            $headers = ['ID', 'URL'];
+            $filename = 'urls.csv';
+
+            header('Content-Type: text/csv');
+            header('Content-Disposition: attachment;filename="' . $filename . '"');
+            header('Cache-Control: max-age=0');
+
+            $output = fopen('php://output', 'w');
+
+            fputcsv($output, $headers);
+
+            foreach ($all_urls as $url) {
+                fputcsv($output, $url);
+            }
+
+            fclose($output);
+
+            exit();
+
+        } catch (Exception $e) {
+            echo "An error occurred: " . htmlspecialchars($e->getMessage()) . " Please try again later.";
         }
     }
 
